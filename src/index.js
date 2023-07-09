@@ -12,7 +12,7 @@ let port =6000
 app.listen(port,()=>console.log('listening on port'+port))
 app.post('/connect',(req,res)=>{
     console.log(req.body)
-    res.json({status:'ok',data:{token:'hithisismyfirstpanel',rng:9999999999999999}})
+    res.json({status:true,data:{token:'free4all',rng:9999999999999999}})
 })
 app.post('/createnewuser',(req,res)=>{
     newuser=new connection({
