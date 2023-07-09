@@ -1,6 +1,12 @@
-// "Create React App" tooling expects to find the WWW root here,
-// so we simply use this file to import the ./www directory.
-//
-// For the backend, we set the container's entrypoint to src/api/index.js
 
-module.exports = require('./www')
+const express=require('express');
+const app=express();
+const bodyParser=require('body-parser')
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
+let port =6000
+app.listen(port,()=>console.log('listening on port'+port))
+app.post('/connect',(req,res)=>{
+    console.log(req.body)
+    res.json({status:'ok',data:{token:'hithisismyfirstpanel',rng:9999999999999999}})
+})
