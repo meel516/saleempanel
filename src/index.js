@@ -1,6 +1,8 @@
 
 const express=require('express');
+const cors=require('cors')
 const app=express();
+app.use(cors())
 const { connection } = require('../model/connector')
 const bodyParser=require('body-parser');
 const { request } = require('http');
