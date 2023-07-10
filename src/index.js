@@ -22,7 +22,7 @@ app.post('/connect',(req,res)=>{
     connection.findOne({key: req.body.user_key}).then((data)=>{
         console.log(data)
       if(data==null||data.active!==req.body.UUID){
-        connection.findOneandUpdate({key:req.body.user_key},{active:req.body.UUID}).then
+        connection.findOneAndUpdate({key:req.body.user_key},{active:req.body.UUID}).then
             res.json({status:false,reason:'user is not registered'})
       }
       else{
