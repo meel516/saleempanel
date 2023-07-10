@@ -2,6 +2,7 @@ const mongoURI = "mongodb+srv://mdsaleem516:a4dtNSbNPV1KOFHh@cluster0.npkfbjc.mo
 
 let mongoose = require('mongoose');
 const { tallySchema } = require('./user')
+const {paneluserSchema}=require('./paneluser')
 
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -10,6 +11,8 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
         console.log("error while connection", err)
     });
 collection_connection = mongoose.model('user', tallySchema)
+paneluser = mongoose.model('paneluser', paneluserSchema)
 
 
 exports.connection = collection_connection;
+exports.paneldatabase = paneluser;
