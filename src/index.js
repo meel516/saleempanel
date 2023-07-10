@@ -12,14 +12,13 @@ let port =6000
 app.listen(port,()=>console.log('listening on port'+port))
 app.post('/connect',(req,res)=>{
     console.log(req.body)
-    connection.find({user_key: req.body.user_key},(error,users)=>{
-        if(error){
+    const data=connection.find({user_key: req.body.user_key})
+      if(data.user_key==undefined){
             res.json({status:false,reason:'user is not registered'})
-        }
-       if(users){
+      }
+      else{
         res.json({status:true,data:{token:'free4all',rng:users.expiry,modname:users.modname,username:users.username}})
-       }
-    })
+      }
   
 })
 app.post('/createnewuser',(req,res)=>{
