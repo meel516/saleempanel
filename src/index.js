@@ -22,10 +22,13 @@ app.post('/connect',(req,res)=>{
     connection.findOne({key: req.body.user_key}).then((data)=>{
         console.log(data)
       if(data==null||data.active!==req.body.UUID){
-        connection.findOneAndUpdate({key:req.body.user_key},{active:req.body.UUID}).then
+        
             res.json({status:false,reason:'user is not registered'})
       }
       else{
+        if(data.active!=''){
+          connection.findOneAndUpdate({key:req.body.user_key},{active:req.body.UUID}).then((tr)=>{console.log(tr)}).catch((err)=>{console.log(err)})
+        }
         res.json({status:true,data:{token:'free4all',rng:parseInt(data.expiry),modname:data.modname,username:data.username}})
       }
     }
