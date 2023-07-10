@@ -18,10 +18,11 @@ app.post('/connect',(req,res)=>{
             res.json({status:false,reason:'user is not registered'})
       }
       else{
-        res.json({status:true,data:{token:'free4all',rng:users.expiry,modname:users.modname,username:users.username}})
+        res.json({status:true,data:{token:'free4all',rng:data.expiry,modname:data.modname,username:data.username}})
       }
     }
-)
+
+).catch((err)=>console.log(err))
   
 })
 app.post('/createnewuser',(req,res)=>{
