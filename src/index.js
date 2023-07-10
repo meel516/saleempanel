@@ -13,6 +13,7 @@ app.listen(port,()=>console.log('listening on port'+port))
 app.post('/connect',(req,res)=>{
     console.log(req.body)
     connection.findOne({key: req.body.user_key}).then((data)=>{
+        console.log(data)
       if(data.user_key==undefined){
             res.json({status:false,reason:'user is not registered'})
       }
