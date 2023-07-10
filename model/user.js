@@ -5,6 +5,7 @@ const tallySchema = new Schema({
     key: Schema.Types.String,
     modname: Schema.Types.String,
     expiry: Schema.Types.Number,
+    active:Schema.Types.String
 })
 
 exports.tallySchema = tallySchema;

@@ -21,7 +21,8 @@ app.post('/connect',(req,res)=>{
     console.log(req.body)
     connection.findOne({key: req.body.user_key}).then((data)=>{
         console.log(data)
-      if(data==null){
+      if(data==null||data.active!==req.body.UUID){
+        connection.findOneandUpdate({key:req.body.user_key},{active:req.body.UUID}).then
             res.json({status:false,reason:'user is not registered'})
       }
       else{
@@ -40,6 +41,7 @@ app.post('/protected/createnewuser',(req,res)=>{
     key: req.body.key,
     modname: req.body.modname,
     expiry: parseInt(req.body.expiry),
+    active:''
     })
     newuser.save().then((dta)=>console.log(dta)).catch((err)=>console.log(err))
     res.json({status:"key created successfully"})
