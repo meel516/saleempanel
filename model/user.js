@@ -4,7 +4,7 @@ const tallySchema = new Schema({
     username: Schema.Types.String,
     key: Schema.Types.String,
     modname: Schema.Types.String,
-    expiry: Schema.Types.String,
+    expiry: Schema.Types.Number,
 })
 
 exports.tallySchema = tallySchema;
