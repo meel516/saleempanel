@@ -26,7 +26,10 @@ app.post('/connect',(req,res)=>{
       }
       else{
         if(data.serial==''){
-          connection.findOneAndUpdate({key:req.body.user_key},{serial:data.serial})
+          connection.findOneAndUpdate({key:req.body.user_key},{serial:data.serial}).then((mssg)=>console.log(mssg)).catch((err)=>console.log(err))
+        }
+        else if(data.serial!=req.body.serial){
+          res.json({status:false,reason:'device limit exceeded'})
         }
         res.json({status:true,data:{token:'free4all',rng:parseInt(data.expiry),modname:data.modname,username:data.username}})
       }
