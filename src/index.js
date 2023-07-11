@@ -21,7 +21,7 @@ app.post('/connect',(req,res)=>{
     console.log(req.body)
     connection.findOne({key: req.body.user_key}).then((data)=>{
         console.log(data)
-      if(data==null||req.body.serial!=data.serial){
+      if(data==null){
             res.json({status:false,reason:'user is not registered'})
       }
       else{
